@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://bftr0uxj7sxew"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_aw41o"]
+[ext_resource type="Texture2D" uid="uid://dod8elet52nkv" path="res://Art/tiny dungeon.png" id="2_shk8i"]
+[ext_resource type="Script" path="res://Scripts/Input.gd" id="3_mlfe6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0aalb"]
+size = Vector2(14, 15)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ggk20"]
+properties/0/path = NodePath("Input:direction")
+properties/0/spawn = true
+properties/0/sync = true
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_k2yo3"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_aw41o")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_shk8i")
+hframes = 12
+vframes = 11
+frame = 85
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_0aalb")
+
+[node name="Input" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ggk20")
+script = ExtResource("3_mlfe6")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_k2yo3")
+
+[node name="CollisionDetection" type="Node2D" parent="."]
+
+[node name="Right" type="RayCast2D" parent="CollisionDetection"]
+position = Vector2(0, -6)
+target_position = Vector2(32, 0)
+
+[node name="Left" type="RayCast2D" parent="CollisionDetection"]
+position = Vector2(0, 7)
+target_position = Vector2(32, 0)

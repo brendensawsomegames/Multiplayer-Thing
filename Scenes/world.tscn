@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://313hkpp8jtlj"]
+
+[ext_resource type="Script" path="res://Scripts/Level.gd" id="1_1temy"]
+[ext_resource type="Texture2D" uid="uid://dod8elet52nkv" path="res://Art/tiny dungeon.png" id="2_qfayi"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8d0no"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lmwrf"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_onr3b"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dtgkr"]
+normal = Vector2(-1, 0)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_1temy")
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Nodes/player.tscn")
+spawn_path = NodePath("../Players")
+
+[node name="WorldBarrier" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBarrier"]
+shape = SubResource("WorldBoundaryShape2D_8d0no")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldBarrier"]
+shape = SubResource("WorldBoundaryShape2D_lmwrf")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WorldBarrier"]
+position = Vector2(288, 162)
+shape = SubResource("WorldBoundaryShape2D_onr3b")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="WorldBarrier"]
+position = Vector2(288, 162)
+shape = SubResource("WorldBoundaryShape2D_dtgkr")
+metadata/_edit_lock_ = true
+
+[node name="Ground" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(18, 10.125)
+texture = ExtResource("2_qfayi")
+centered = false
+hframes = 12
+vframes = 11
+frame = 48
+metadata/_edit_lock_ = true

@@ -1,0 +1,4 @@
+res://Nodes/player.tscn
+res://Scenes/multiplayer.tscn
+res://Scenes/world.tscn
+res://Scripts/Player.gd

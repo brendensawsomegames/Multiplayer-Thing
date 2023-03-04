@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg43487n5sxlv"]
+
+[ext_resource type="Script" path="res://Scripts/Multiplayer.gd" id="1_5rol8"]
+
+[node name="Multiplayer" type="Node"]
+script = ExtResource("1_5rol8")
+
+[node name="Level" type="Node" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/world.tscn")
+spawn_path = NodePath("../Level")
+spawn_limit = 1
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Net" type="VBoxContainer" parent="UI"]
+layout_mode = 0
+offset_right = 255.0
+offset_bottom = 31.0
+
+[node name="Options" type="HBoxContainer" parent="UI/Net"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Net/Options"]
+layout_mode = 2
+text = "Direct"
+
+[node name="Host" type="Button" parent="UI/Net/Options"]
+layout_mode = 2
+text = "Host"
+
+[node name="Connect" type="Button" parent="UI/Net/Options"]
+layout_mode = 2
+text = "Connect"
+
+[node name="Remote" type="LineEdit" parent="UI/Net/Options"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "10.0.0.14"
+placeholder_text = "Remote"
+
+[connection signal="pressed" from="UI/Net/Options/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="UI/Net/Options/Connect" to="." method="_on_connect_pressed"]

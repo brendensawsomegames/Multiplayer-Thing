@@ -1,0 +1,15 @@
+2a60927148abd1d33b818b535e306557
+::res://::1677947627
+icon.svg::CompressedTexture2D::5538301987791002892::1677638014::1677638026::1::::<><>::
+::res://Art/::1677729797
+tiny dungeon.png::CompressedTexture2D::8150110384051357749::1677727058::1677729797::1::::<><>::
+::res://Nodes/::1677903116
+player.tscn::PackedScene::2777665999384971242::1677903116::0::1::::<><>::res://Scripts/Player.gd<>uid://dod8elet52nkv<>res://Scripts/Input.gd
+::res://Scenes/::1677903049
+multiplayer.tscn::PackedScene::2869174347545512951::1677903049::0::1::::<><>::res://Scripts/Multiplayer.gd
+world.tscn::PackedScene::2020674568956830403::1677903049::0::1::::<><>::res://Scripts/Level.gd<>uid://dod8elet52nkv
+::res://Scripts/::1677903116
+Input.gd::GDScript::-1::1677903010::0::1::::<>MultiplayerSynchronizer<>::
+Level.gd::GDScript::-1::1677892846::0::1::::<>Node2D<>::
+Multiplayer.gd::GDScript::-1::1677900576::0::1::::<>Node<>::
+Player.gd::GDScript::-1::1677903116::0::1::::<>Node2D<>::
